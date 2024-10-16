@@ -124,10 +124,10 @@ class DQN(object):
         torch.save(self.target_net.state_dict(), self.model_path)
         log.appendLog(f"模型已保存至{self.model_path}", "INFO")
 
-    def load_model(self):
+    def load_model(self, existed_model_path=None):
         """加载模型"""
-        self.target_net.load_state_dict(torch.load(self.model_path))
-        log.appendLog(f"模型已加载自{self.model_path}", "INFO")
+        self.target_net.load_state_dict(torch.load(existed_model_path))
+        log.appendLog(f"模型已加载自{existed_model_path}", "INFO")
 
     def update_target_net(self):
         """更新目标网络"""

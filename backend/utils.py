@@ -79,11 +79,11 @@ def action_judge(boss_health, next_boss_health, knight_health, next_knight_healt
     if next_boss_health < boss_health and boss_health - next_boss_health <50: # BOSS受伤且受伤值不超过50
         damage = boss_health - next_boss_health
         if damage > 10:
-            boss_blood_reward = damage*1.2
-            log.appendLog(f"击伤BOSS，奖励{boss_blood_reward}分", "INFO")
+            boss_blood_reward = damage*1.5
+            log.appendLog(f"击伤BOSS，奖励{boss_blood_reward:.2f}分", "INFO")
         else:
             boss_blood_reward = damage*0.1
-            log.appendLog(f"生存时间奖励：{boss_blood_reward}分", "INFO")
+            log.appendLog(f"生存时间奖励：{boss_blood_reward:.2f}分", "INFO")
     
     reward = self_blood_reward + boss_blood_reward
     done = 0

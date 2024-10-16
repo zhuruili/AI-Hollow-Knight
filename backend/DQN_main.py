@@ -27,6 +27,7 @@ target_step = 0
 pause = False
 
 DQN_model_path = 'D:\helloworld_python\Rookie\Programs\AI\AI-Hollow-Knight\\backend\\rsc\models\dqn_model.pth'
+existed_model_path = ''
 
 action_space = 6 # 动作空间维度
 """
@@ -39,12 +40,19 @@ action_space = 6 # 动作空间维度
 5 - Idle: 无操作
 """
 
-def TrainingStart():
+def TrainingStart(use_existed_model=False):
     """
     开始训练
+    @param use_existed_model: 是否使用已有模型
     """
-    control.click_login()
+
     agent = DQN(ob_height=HEIGHT, ob_width=WIDTH, action_space=action_space, model_path=DQN_model_path)
+    if use_existed_model:
+        agent.load_model(existed_model_path)
+    else:
+        log.appendLog("未指定预训练模型，将创建新模型用于训练", "INFO")
+
+    control.click_login() # 使游戏窗口获得焦点
     log.appendLog("开始训练", "INFO")
 
     reward_list = [] # 记录每轮奖励
