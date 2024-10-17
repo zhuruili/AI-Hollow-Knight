@@ -4,16 +4,14 @@
 
 **注意事项**：若要调试程序，请以管理员身份启动VSC
 
+---
+
+目前小骑士偶尔能够战胜万神殿的第一个BOSS，但是程序仍存在许多BUG
+
+预计在项目完成后更新README，提供更多信息
+
+---
+
 ## 参考资料
 
-### 视频教程
-
-1. 来自B站UP主‘蓝魔digital’的只狼打BOSS教程：[【DQN只狼实战教程】手把手带你实现用强化学习DQN打只狼里的boss](https://www.bilibili.com/video/BV1xV411B7LU)
-
-### 项目地址
-
-1. [【DQN只狼实战教程】仓库](https://github.com/analoganddigital/DQN_play_sekiro/blob/main/README.md)
-
-### 参考文献
-
-- [这篇论文](https://example.com/paper): 作者姓名, 论文标题, 期刊名称, 年份, 卷号(期号): 页码.
+- [DQN只狼](https://github.com/analoganddigital/DQN_play_sekiro/blob/main/README.md): 蓝魔digital, DQN只狼实战教程, Github, 2021.
