@@ -29,7 +29,7 @@ class editInterface(QWidget):
         mainLayout.setContentsMargins(30, 10, 30, 30)
 
         self.TrainStartButton = PushButton(FIF.PLAY_SOLID, 'Training Start', self) # 训练开始按钮
-        self.TrainStartButton.clicked.connect(TrainingStart)
+        self.TrainStartButton.clicked.connect(lambda: TrainingStart(use_existed_model=True))
         self.TrainPauseButton = PushButton(FIF.PAUSE, 'Training Pause', self) # 训练暂停按钮
         self.TrainContinueButton = PushButton(FIF.PLAY, 'Training Continue', self) # 训练继续按钮
         pause_and_continue_hbox = QHBoxLayout()

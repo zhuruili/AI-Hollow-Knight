@@ -21,13 +21,13 @@ HEIGHT = 72
 WIDTH = 128
 epochs = 2000 # 训练轮数
 big_BATCH_SIZE = 16 # 大批量大小
-UPDATE_STEP = 50 # 更新步数
+UPDATE_STEP = 48 # 更新步数
 num_step = 0 
 target_step = 0
 pause = False
 
 DQN_model_path = 'D:\helloworld_python\Rookie\Programs\AI\AI-Hollow-Knight\\backend\\rsc\models\dqn_model.pth'
-existed_model_path = ''
+existed_model_path = 'D:\helloworld_python\Rookie\Programs\AI\AI-Hollow-Knight\\backend\\rsc\models\existed_model\model_20241017_30.pth'
 
 action_space = 6 # 动作空间维度
 """
@@ -64,7 +64,8 @@ def TrainingStart(use_existed_model=False):
         done = 0
         total_reward = 0
 
-        stop = 0 # 防止重复计算扣血
+        stop = 0 # 防止连续取帧重复计算扣血
+        HealDownCount = 0 # 防止图标闪烁误判死亡导致重复扣分
 
         screen_RGB = screen_grab()
         screen_gray = cv2.cvtColor(screen_RGB, cv2.COLOR_BGR2GRAY)
@@ -93,9 +94,9 @@ def TrainingStart(use_existed_model=False):
             next_state_torch = torch.from_numpy(next_state).to(dtype=torch.float).to(agent.device)
             next_boss_blood = blood_detect_Boss(screen_RGB)
             next_self_blood = blood_detect_Knight(screen_RGB)
-            reward, done, stop = action_judge(boss_health=boss_blood, next_boss_health=next_boss_blood,
+            reward, done, stop, HealDownCount = action_judge(boss_health=boss_blood, next_boss_health=next_boss_blood,
                                                                knight_health=self_blood, next_knight_health=next_self_blood,
-                                                               stop=stop,
+                                                               stop=stop, HealDownCount=HealDownCount,
                                                                )
             # 存储经验
             agent.store_transition(state, action, reward, next_state_torch, done)

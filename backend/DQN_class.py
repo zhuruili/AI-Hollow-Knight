@@ -15,8 +15,8 @@ import torch.nn.functional as F
 from frontend.logWindow import log
 
 # 部分超参数设置
-REPLAY_SIZE = 1000
-INITIAL_EPSILON = 0.5
+REPLAY_SIZE = 2000
+INITIAL_EPSILON = 0.4
 FINAL_EPSILON = 0.01
 BATCH_SIZE = 16
 GAMMA = 0.9

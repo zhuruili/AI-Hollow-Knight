@@ -14,7 +14,7 @@ from frontend.logWindow import log
 
 def Slash():
     """普通攻击：挥砍"""
-    control.tap_long("j",0.1)
+    control.tap_long("j",0.08)
     log.appendLog("挥砍", "OP")
 
 def Dash():
@@ -24,16 +24,24 @@ def Dash():
 
 def Left():
     """向左移动小段距离"""
-    control.tap_long("a", 0.2)
+    control.tap_long("a", 0.15)
     
 def Right():
     """向右移动小段距离"""
-    control.tap_long("d", 0.2)
+    control.tap_long("d", 0.15)
 
 def Jump():
     """跳跃"""
-    control.tap_long("k", 0.4)
+    control.tap_long("k", 0.35)
     # log.appendLog("跳跃", "OP")
+
+def UpSlash():
+    """上劈"""
+    pass
+
+def WaveAttack():
+    """黑波"""
+    pass
 
 def take_action(action):
     """
@@ -55,7 +63,7 @@ def take_action(action):
     else:
         log.appendLog(f"无效动作：{action}", "ERROR")
 
-def action_judge(boss_health, next_boss_health, knight_health, next_knight_health, stop):
+def action_judge(boss_health, next_boss_health, knight_health, next_knight_health, stop, HealDownCount):
     """
     action reward judge
     @param boss_health: BOSS当前生命值
@@ -63,16 +71,20 @@ def action_judge(boss_health, next_boss_health, knight_health, next_knight_healt
     @param knight_health: 小骑士当前生命值
     @param next_knight_health: 下一帧小骑士生命值
     @param stop: 是否停止扣分
+    @param HealDownCount: 血量下降次数
     """
         
+    temp_HDC = HealDownCount
+
     self_blood_reward = 0
     boss_blood_reward = 0
 
-    if next_knight_health < knight_health: # 小骑士受伤
+    if next_knight_health < knight_health and temp_HDC <= 9: # 小骑士受伤
         if stop == 0:
-            self_blood_reward = -40
+            temp_HDC += 1
+            self_blood_reward = -10*temp_HDC
             stop = 1 # 防止连续取帧时重复扣分
-            log.appendLog("小骑士受伤，扣50分", "INFO")
+            log.appendLog(f"小骑士受伤，扣{self_blood_reward}分，累计受伤扣分次数：{temp_HDC}", "INFO")
     else:
         stop = 0
 
@@ -88,7 +100,7 @@ def action_judge(boss_health, next_boss_health, knight_health, next_knight_healt
     reward = self_blood_reward + boss_blood_reward
     done = 0
 
-    return reward, done, stop
+    return reward, done, stop, temp_HDC
 
 def screen_grab(x=0, y=0, w=1288, h=757):
     """

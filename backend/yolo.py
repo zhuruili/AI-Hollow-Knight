@@ -10,7 +10,7 @@ from ultralytics import YOLO
 
 from .init import window_title
 
-def detect(model='backend\\tasks\models\Liuyuezhisen.pt'):
+def detect(model='backend\\tasks\models\BOSS.pt'):
     """
     目标检测
     :param model: 模型路径

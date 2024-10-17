@@ -14,7 +14,7 @@ from .init import hwnd # 窗口句柄
 
 from frontend.logWindow import log
 
-pyautogui.PAUSE = 0.005 # 设置每次按键后的自动间隔时间
+pyautogui.PAUSE = 0.003 # 设置每次按键后的自动间隔时间
 
 class Control:
     """模拟一般键鼠输入"""
@@ -42,7 +42,6 @@ class Control:
         if isinstance(key, str):
             key = ord(key.upper()) # 转换为ascii码
         pyautogui.press(chr(key))
-        time.sleep(0.005)
 
     def tap_long(self, key: Union[str, int], duration: float):
         """长按指定的键"""
