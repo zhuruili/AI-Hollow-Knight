@@ -24,15 +24,15 @@ def Dash():
 
 def Left():
     """向左移动小段距离"""
-    control.tap_long("a", 0.15)
+    control.tap_long("a", 0.12)
     
 def Right():
     """向右移动小段距离"""
-    control.tap_long("d", 0.15)
+    control.tap_long("d", 0.12)
 
 def Jump():
     """跳跃"""
-    control.tap_long("k", 0.35)
+    control.tap_long("k", 0.32)
     # log.appendLog("跳跃", "OP")
 
 def UpSlash():
@@ -79,7 +79,7 @@ def action_judge(boss_health, next_boss_health, knight_health, next_knight_healt
     self_blood_reward = 0
     boss_blood_reward = 0
 
-    if next_knight_health < knight_health and temp_HDC <= 9: # 小骑士受伤
+    if next_knight_health < knight_health and temp_HDC < 9: # 小骑士受伤
         if stop == 0:
             temp_HDC += 1
             self_blood_reward = -10*temp_HDC
