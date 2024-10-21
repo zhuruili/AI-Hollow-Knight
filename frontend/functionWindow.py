@@ -16,7 +16,7 @@ from qfluentwidgets import (SegmentedToggleToolWidget,
 from qfluentwidgets import FluentIcon as FIF
 
 from backend.DQN_main import TrainingStart
-from backend.utils import (Slash, restart, 
+from backend.utils import (UpSlash, restart, 
                            screen_grab_test, BloodDetectTest_K, BloodDetectTest_B, 
 )
 
@@ -88,7 +88,7 @@ class gameInterface(QWidget):
 
         # 按键测试按钮
         self.FightRepeatButton = PushButton(FIF.PLAY, '按键测试', self)
-        self.FightRepeatButton.clicked.connect(Slash)
+        self.FightRepeatButton.clicked.connect(UpSlash)
 
         RewardLayout = QHBoxLayout() # 水平布局
         

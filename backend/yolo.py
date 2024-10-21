@@ -1,5 +1,5 @@
 """
-基于yolov10的目标检测
+为解决少数情况下重开失败的问题可能需要引入的目标检测（暂未实装）
 """
 import cv2 as cv
 import numpy as np

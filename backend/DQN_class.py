@@ -73,16 +73,19 @@ class DQN(object):
 
     def choose_action(self, state):
         """选择动作"""
+        num_actions = 2 # 每次选择的动作数量
         # ε-贪婪策略
         if np.random.uniform(0, 1) <= self.epsilon:
-            action = np.random.randint(0, self.action_dim) 
+            # 随机选择多个动作
+            actions = np.random.choice(range(self.action_dim), size=num_actions, replace=False).tolist()
         else:
             Q_value = self.eval_net(state)
-            action = torch.argmax(Q_value)
+            # 根据Q值选择多个动作
+            actions = torch.topk(Q_value, num_actions)[1].cpu().detach().numpy().tolist()
         # ε衰减
         self.epsilon = max(FINAL_EPSILON, self.epsilon - (INITIAL_EPSILON - FINAL_EPSILON) / 10000)
         
-        return action
+        return actions
     
     def store_transition(self, state, action, reward, next_state, done):
         """存储经验"""
