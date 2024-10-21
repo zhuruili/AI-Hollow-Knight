@@ -85,6 +85,8 @@ class DQN(object):
         # ε衰减
         self.epsilon = max(FINAL_EPSILON, self.epsilon - (INITIAL_EPSILON - FINAL_EPSILON) / 10000)
         
+        # log.appendLog(f"选择动作：{actions}", "INFO")
+
         return actions
     
     def store_transition(self, state, action, reward, next_state, done):

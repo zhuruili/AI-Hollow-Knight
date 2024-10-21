@@ -32,4 +32,3 @@ reward变化图（实际为30~70轮训练的reward）：
 
 - [DQN只狼](https://github.com/analoganddigital/DQN_play_sekiro/blob/main/README.md): 蓝魔digital, DQN只狼实战教程, Github, 2021.
 - [DQN只狼（Pytorch）](https://github.com/Skaiyin/DQN_play_blood):Skaiyin, torch form, Github, 2024.
-- [MingChaoAI](https://gitee.com/LanRenZhiNeng/ming-chao-ai):LanRenZhiNeng, 鸣潮自动化工具, Gitee, 2024.

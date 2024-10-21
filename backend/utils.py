@@ -38,6 +38,7 @@ def Jump():
 
 def UpSlash():
     """上劈"""
+    control.click_login()
     pyautogui.hotkey("w", "j")
 
 def WaveAttack():
@@ -62,16 +63,17 @@ def take_action(actions):
             Jump()
         elif action == 5:
             pass
-        else:
-            log.appendLog(f"未知动作：{action}", "WARNING")
+        else: 
+        #     log.appendLog(f"未知动作：{action}", "WARNING") # 不能在此处调用log.appendLog，否则会导致多线程下的日志混乱
+            print(f"未知动作：{action}") # DEBUG
         
-        threads = []
-        for action in actions:
-            t = threading.Thread(target=execute_action, args=(action,))
-            threads.append(t)
-            t.start()
-        for t in threads:
-            t.join() # 等待所有线程结束
+    threads = []
+    for action in actions:
+        t = threading.Thread(target=lambda a=action: execute_action(a))
+        threads.append(t)
+        t.start()
+    for t in threads:
+        t.join() # 等待所有线程结束
 
 def action_judge(boss_health, next_boss_health, knight_health, next_knight_health, stop, HealDownCount):
     """
@@ -101,7 +103,7 @@ def action_judge(boss_health, next_boss_health, knight_health, next_knight_healt
     if next_boss_health < boss_health and boss_health - next_boss_health <50: # BOSS受伤且受伤值不超过50
         damage = boss_health - next_boss_health
         if damage > 10:
-            boss_blood_reward = damage*1.5
+            boss_blood_reward = damage*1.8
             log.appendLog(f"击伤BOSS，奖励{boss_blood_reward:.2f}分", "INFO")
         else:
             boss_blood_reward = damage*0.1
