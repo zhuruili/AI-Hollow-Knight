@@ -50,26 +50,26 @@ def take_action(actions):
     执行动作
     @param actions: 动作编号（列表）
     """
-    def execute_action(action):
-        if action == 0:
+    def execute_action(a):
+        if a == 0:
             Slash()
-        elif action == 1:
+        elif a == 1:
             Dash()
-        elif action == 2:
+        elif a == 2:
             Left()
-        elif action == 3:
+        elif a == 3:
             Right()
-        elif action == 4:
+        elif a == 4:
             Jump()
-        elif action == 5:
+        elif a == 5:
             pass
         else: 
-        #     log.appendLog(f"未知动作：{action}", "WARNING") # 不能在此处调用log.appendLog，否则会导致多线程下的日志混乱
-            print(f"未知动作：{action}") # DEBUG
+        #     log.appendLog(f"未知动作：{a}", "WARNING") # 不能在此处调用log.appendLog，否则会导致多线程下的日志混乱
+            print(f"未知动作：{a}") # DEBUG
         
     threads = []
-    for action in actions:
-        t = threading.Thread(target=lambda a=action: execute_action(a))
+    for act in actions:
+        t = threading.Thread(target=lambda a=act: execute_action(a))
         threads.append(t)
         t.start()
     for t in threads:
