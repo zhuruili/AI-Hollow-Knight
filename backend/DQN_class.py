@@ -78,10 +78,13 @@ class DQN(object):
         if np.random.uniform(0, 1) <= self.epsilon:
             # 随机选择多个动作
             actions = np.random.choice(range(self.action_dim), size=num_actions, replace=False).tolist()
+            # print(f"随机选择动作：{actions}") # DEBUG
         else:
             Q_value = self.eval_net(state)
             # 根据Q值选择多个动作
-            actions = torch.topk(Q_value, num_actions)[1].cpu().detach().numpy().tolist()
+            actions = torch.topk(Q_value, num_actions)[1].cpu().detach().numpy().tolist() # 这样得到的是一个形如[[0,1]]嵌套列表，需要转换为一维列表
+            actions = [item for sublist in actions for item in sublist] # 将嵌套列表转换为一维列表
+            # print(f"根据Q值选择动作：{actions}") # DEBUG
         # ε衰减
         self.epsilon = max(FINAL_EPSILON, self.epsilon - (INITIAL_EPSILON - FINAL_EPSILON) / 10000)
         

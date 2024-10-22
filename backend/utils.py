@@ -65,9 +65,10 @@ def take_action(actions):
             pass
         else: 
         #     log.appendLog(f"未知动作：{a}", "WARNING") # 不能在此处调用log.appendLog，否则会导致多线程下的日志混乱
-            print(f"未知动作：{a}") # DEBUG
+            print(f"未知动作：{a}")
         
     threads = []
+    # print(f"执行动作：{actions}") # DEBUG
     for act in actions:
         t = threading.Thread(target=lambda a=act: execute_action(a))
         threads.append(t)
