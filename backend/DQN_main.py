@@ -77,6 +77,10 @@ def TrainingStart(use_existed_model=False):
         last_time = time.time() 
         
         while not done:
+            # 记录本轮内循环开始的时间,用于测算每一步耗时评估算法效率
+            # time_taken_start = time.time() # DEBUG
+
+            # 获取当前状态
             state = torch.from_numpy(state).to(dtype=torch.float).to(agent.device)
             state = state.reshape(-1, 1, HEIGHT, WIDTH)[0] # 将状态转换为模型输入格式
             target_step += 1
@@ -127,6 +131,8 @@ def TrainingStart(use_existed_model=False):
             if done == 1:
                 log.appendLog("Done", "INFO")
                 break
+            # time_taken_end = time.time() # DEBUG
+            # print(f"Time taken: {time_taken_end - time_taken_start}") # DEBUG
         # 记录每轮奖励
         reward_list.append(total_reward)
         # 每10轮保存一次模型与奖励信息图

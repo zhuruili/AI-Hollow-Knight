@@ -14,7 +14,7 @@ from .init import hwnd # 窗口句柄
 
 from frontend.logWindow import log
 
-pyautogui.PAUSE = 0.001 # 设置每次按键后的自动间隔时间
+pyautogui.PAUSE = 0.0001 # 设置每次按键后的自动间隔时间
 
 class Control:
     """模拟一般键鼠输入"""

@@ -15,7 +15,7 @@ from frontend.logWindow import log
 
 def Slash():
     """普通攻击：挥砍"""
-    control.tap_long("j",0.08)
+    control.tap_long("j",0.06)
     # log.appendLog("挥砍", "OP")
 
 def Dash():
@@ -25,15 +25,15 @@ def Dash():
 
 def Left():
     """向左移动小段距离"""
-    control.tap_long("a", 0.08)
+    control.tap_long("a", 0.06)
     
 def Right():
     """向右移动小段距离"""
-    control.tap_long("d", 0.08)
+    control.tap_long("d", 0.06)
 
 def Jump():
     """跳跃"""
-    control.tap_long("k", 0.25)
+    control.tap_long("k", 0.24)
     # log.appendLog("跳跃", "OP")
 
 def UpSlash():
@@ -64,7 +64,7 @@ def take_action(actions):
         elif a == 5:
             pass
         else: 
-        #     log.appendLog(f"未知动作：{a}", "WARNING") # 不能在此处调用log.appendLog，否则会导致多线程下的日志混乱
+        #     log.appendLog(f"未知动作：{a}", "WARNING") # 不能在此处调用log.appendLog，疑似与PyQt的线程机制存在冲突
             print(f"未知动作：{a}")
         
     threads = []

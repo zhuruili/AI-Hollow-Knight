@@ -6,6 +6,15 @@
 
 ---
 
+## 网络架构
+
+最初的网络架构比较简单粗暴，网络结构的变更日志如下（配置参考：RTX3050-GPU-laptop）：
+
+- 2024-10-12：缩水版AlexNet
+- 2024-10-24：在前代架构下缩减了参数量
+
+>Tip：由于个人能力有限，我目前使用的网络架构效率可能仍较为低下，如果有更优的方案欢迎讨论。
+
 ## 日志
 
 ### [万神殿-格鲁兹之母-调谐级] 2024-10-17
@@ -22,7 +31,7 @@ reward变化图（实际为30~70轮训练的reward）：
 
 ## 限制与不足
 
-- 当前的代码并没有对小骑士做操作的多线程适配（相当于你在用一到两根手指头打游戏）
+- 当前的代码对小骑士操作的多线程适配并不完全（相当于你在用一到两根手指头打游戏）
 - 以我个人的程序效率与算力支持，程序的实际每秒接收帧数可能只有6~8帧
 - 奖励机制的设置较为简单粗暴
 
@@ -30,5 +39,5 @@ reward变化图（实际为30~70轮训练的reward）：
 
 ## 参考资料
 
-- [DQN只狼](https://github.com/analoganddigital/DQN_play_sekiro/blob/main/README.md): 蓝魔digital, DQN只狼实战教程, Github, 2021.
-- [DQN只狼（Pytorch）](https://github.com/Skaiyin/DQN_play_blood):Skaiyin, torch form, Github, 2024.
+- [DQN-Sekiro](https://github.com/analoganddigital/DQN_play_sekiro/blob/main/README.md): 蓝魔digital, DQN只狼实战教程, Github, 2021.
+- [DQN-Sekiro（Pytorch）](https://github.com/Skaiyin/DQN_play_blood):Skaiyin, torch form, Github, 2024.
