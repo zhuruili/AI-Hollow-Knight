@@ -38,15 +38,22 @@ class NET(nn.Module):
         self.net = nn.Sequential(
             nn.Conv2d(1, 16, kernel_size=[3, 3], stride=1, padding='same'),
             nn.ReLU(),
-            nn.MaxPool2d(kernel_size=2, stride=2),
-            nn.Conv2d(16, 32, kernel_size=[5, 5], stride=1, padding='same'),
+            nn.Conv2d(16, 32, kernel_size=[3, 3], stride=1, padding='same'),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2),
+
+            nn.Conv2d(32, 64, kernel_size=[3, 3], stride=1, padding='same'),
+            nn.ReLU(),
+            nn.Conv2d(64, 64, kernel_size=[3, 3], stride=1, padding='same'),
+            nn.ReLU(),
+            nn.Conv2d(64, 32, kernel_size=[3, 3], stride=1, padding='same'),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2)
         )
 
-        self.fc1 = nn.Linear(int((self.state_w/4) * (self.state_h/4) * 32), 512)
-        self.fc2 = nn.Linear(512, 256)
-        self.fc3 = nn.Linear(256, self.action_dim)
+        self.fc1 = nn.Linear(int((self.state_w/4) * (self.state_h/4) * 32), 256)
+        self.fc2 = nn.Linear(256, 128)
+        self.fc3 = nn.Linear(128, self.action_dim)
 
     def forward(self, x):
         """前向传播"""
