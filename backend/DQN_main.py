@@ -124,7 +124,7 @@ def TrainingStart(use_existed_model=False):
                 if not pause:
                     break
             # 如果屏幕基本全白，说明游戏已结束，done置1
-            if np.mean(screen_gray) > 250:
+            if np.mean(screen_gray) > 240:
                log.appendLog("检测到白屏，游戏结束", "INFO")
                done = 1      
             # DONE

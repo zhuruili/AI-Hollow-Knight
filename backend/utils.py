@@ -193,7 +193,7 @@ def restart():
     Jump() # 小骑士起身
     log.appendLog("小骑士起身", "INFO")
     time.sleep(5)
-    control.tap_long("w",0.3) # 与BOSS神像交互
+    control.tap_long("w",0.4) # 与BOSS神像交互
     log.appendLog("与神像交互", "INFO")
     time.sleep(2)
     Jump() # 确认进入副本

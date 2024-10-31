@@ -1,3 +1,6 @@
 Temp/
 *.pth
 *.pyc
+*__pycache__/
+backend/rsc/models/existed_model/
+backend/rsc/images/

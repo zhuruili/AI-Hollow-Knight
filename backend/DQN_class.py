@@ -58,7 +58,7 @@ class NET(nn.Module):
     def forward(self, x):
         """前向传播"""
         x = self.net(x)
-        x = x.view(-1, int((self.state_w/4) * (self.state_h/4) * 64))
+        x = x.view(-1, int((self.state_w/4) * (self.state_h/4) * 32))
         x = self.relu(self.fc1(x))
         x = self.relu(self.fc2(x))
         x = self.fc3(x)
