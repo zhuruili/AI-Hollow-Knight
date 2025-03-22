@@ -1,7 +1,7 @@
 numpy==1.26.3
 pyautogui==0.9.54
 opencv-python==4.9.0.80
-torch==2.0.1+cu118
+torch==2.6.0+cu126
 matplotlib==3.9.2
 pyside6==6.7.2
 pyside6-fluent-widgets==1.6.3
